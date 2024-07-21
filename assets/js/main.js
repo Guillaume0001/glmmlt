@@ -1,28 +1,16 @@
-jQuery(window).on('load', function() {
-    
-     // PAGE LOADING
-     $("body").addClass("page-loaded");   
-    
-});
+var percentageElement = document.getElementById("percentage");
+var percentage = 0;
 
+function process() {
+  percentage += parseInt(Math.random() * 10);
+  if (percentage > 100) {
+    percentage = 100;
+  }
+  percentageElement.innerText = percentage;
+  processInterval();
+}
 
-jQuery(document).ready(function($) {
-	"use strict";
-    
-    
-    // INIT GLITCH BACKGROUND EFFECT
-    $( ".hero .background-img" ).mgGlitch({
-        destroy : false, // set 'true' to stop the plugin
-        glitch: true, // set 'false' to stop glitching
-        scale: true, // set 'false' to stop scaling
-        blend : true, // set 'false' to stop glitch blending
-        blendModeType : 'hue', // select blend mode type
-        glitch1TimeMin : 600, // set min time for glitch 1 elem
-        glitch1TimeMax : 900, // set max time for glitch 1 elem
-        glitch2TimeMin : 10, // set min time for glitch 2 elem
-        glitch2TimeMax : 115, // set max time for glitch 2 elem
-        zIndexStart : 1, // because of absolute position, set z-index base value
-    });
-    
-    
-});
+function processInterval() {
+  setTimeout(process, Math.random() * (1000 - 500) + 500)
+}
+processInterval();
